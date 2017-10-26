@@ -14,7 +14,8 @@ type ContainerSizeAndOffset = {
  * After a certain position, the browser won't allow the user to scroll further (even via JavaScript scroll offset adjustments).
  * This util picks a lower ceiling for max size and artificially adjusts positions within to make it transparent for users.
  */
-export const DEFAULT_MAX_SCROLL_SIZE = 1500000;
+//export const DEFAULT_MAX_SCROLL_SIZE = 1500000;
+export const DEFAULT_MAX_SCROLL_SIZE = Infinity;
 
 type Params = {
   maxScrollSize?: number,
