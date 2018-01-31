@@ -3,6 +3,7 @@
 import type {Alignment, CellSizeGetter, VisibleCellRange} from '../types';
 
 import CellSizeAndPositionManager from './CellSizeAndPositionManager';
+import {getMaxElementSize} from './maxElementSize.js';
 
 type ContainerSizeAndOffset = {
   containerSize: number,
@@ -19,7 +20,6 @@ export const DEFAULT_MAX_SCROLL_SIZE = Infinity;
 
 type Params = {
   maxScrollSize?: number,
-  batchAllCells: boolean,
   cellCount: number,
   cellSizeGetter: CellSizeGetter,
   estimatedCellSize: number,
@@ -32,7 +32,7 @@ export default class ScalingCellSizeAndPositionManager {
   _cellSizeAndPositionManager: CellSizeAndPositionManager;
   _maxScrollSize: number;
 
-  constructor({maxScrollSize = DEFAULT_MAX_SCROLL_SIZE, ...params}: Params) {
+  constructor({maxScrollSize = getMaxElementSize(), ...params}: Params) {
     // Favor composition over inheritance to simplify IE10 support
     this._cellSizeAndPositionManager = new CellSizeAndPositionManager(params);
     this._maxScrollSize = maxScrollSize;

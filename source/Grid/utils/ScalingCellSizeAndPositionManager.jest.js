@@ -1,14 +1,12 @@
 import ScalingCellSizeAndPositionManager from './ScalingCellSizeAndPositionManager';
 
 describe('ScalingCellSizeAndPositionManager', () => {
-  function init(
-    {
-      cellCount = 10,
-      cellSize = 10,
-      estimatedCellSize = 10,
-      maxScrollSize = 50,
-    } = {},
-  ) {
+  function init({
+    cellCount = 10,
+    cellSize = 10,
+    estimatedCellSize = 10,
+    maxScrollSize = 50,
+  } = {}) {
     const cellSizeAndPositionManager = new ScalingCellSizeAndPositionManager({
       cellCount,
       cellSizeGetter: () => cellSize,
@@ -61,7 +59,7 @@ describe('ScalingCellSizeAndPositionManager', () => {
 
     it('should properly scale an offset at the beginning, middle, and end of the list', () => {
       var offsetsAndExpectedAdjustements = [
-        {offset: 0, expectedAdjustment: 0},
+        {offset: 0, expectedAdjustment: -0},
         {offset: 10, expectedAdjustment: -25},
         {offset: 20, expectedAdjustment: -50},
       ];

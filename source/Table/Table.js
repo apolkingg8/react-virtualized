@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
 import {findDOMNode} from 'react-dom';
 import Grid, {accessibilityOverscanIndicesGetter} from '../Grid';
+
 import defaultRowRenderer from './defaultRowRenderer';
 import defaultHeaderRowRenderer from './defaultHeaderRowRenderer';
 import SortDirection from './SortDirection';
@@ -84,9 +85,9 @@ export default class Table extends PureComponent {
     noRowsRenderer: PropTypes.func,
 
     /**
-    * Optional callback when a column's header is clicked.
-    * ({ columnData: any, dataKey: string }): void
-    */
+     * Optional callback when a column's header is clicked.
+     * ({ columnData: any, dataKey: string }): void
+     */
     onHeaderClick: PropTypes.func,
 
     /**
@@ -197,7 +198,12 @@ export default class Table extends PureComponent {
 
     /**
      * Sort function to be called if a sortable header is clicked.
-     * ({ sortBy: string, sortDirection: SortDirection }): void
+     * Should implement the following interface: ({
+     *   defaultSortDirection: 'ASC' | 'DESC',
+     *   event: MouseEvent,
+     *   sortBy: string,
+     *   sortDirection: SortDirection
+     * }): void
      */
     sort: PropTypes.func,
 
@@ -445,19 +451,15 @@ export default class Table extends PureComponent {
 
     const title = typeof renderedCell === 'string' ? renderedCell : null;
 
-    const a11yProps = {
-      role: 'gridcell',
-    };
-
-    if (id) {
-      a11yProps['aria-describedby'] = id;
-    }
-
+    // Avoid using object-spread syntax with multiple objects here,
+    // Since it results in an extra method call to 'babel-runtime/helpers/extends'
+    // See PR https://github.com/bvaughn/react-virtualized/pull/942
     return (
       <div
-        {...a11yProps}
-        key={`Row${rowIndex}-Col${columnIndex}`}
+        aria-describedby={id}
         className={cn('ReactVirtualized__Table__rowColumn', className)}
+        key={'Row' + rowIndex + '-' + 'Col' + columnIndex}
+        role="gridcell"
         style={style}
         title={title}>
         {renderedCell}
@@ -475,13 +477,13 @@ export default class Table extends PureComponent {
       sortDirection,
     } = this.props;
     const {
+      columnData,
       dataKey,
+      defaultSortDirection,
       disableSort,
       headerRenderer,
       id,
       label,
-      columnData,
-      defaultSortDirection,
     } = column.props;
     const sortEnabled = !disableSort && sort;
 
@@ -493,7 +495,10 @@ export default class Table extends PureComponent {
         ReactVirtualized__Table__sortableHeaderColumn: sortEnabled,
       },
     );
-    const style = this._getFlexStyleForColumn(column, headerStyle);
+    const style = this._getFlexStyleForColumn(column, {
+      ...headerStyle,
+      ...column.props.headerStyle,
+    });
 
     const renderedHeader = headerRenderer({
       columnData,
@@ -504,9 +509,11 @@ export default class Table extends PureComponent {
       sortDirection,
     });
 
-    const a11yProps = {
-      role: 'columnheader',
-    };
+    let headerOnClick,
+      headerOnKeyDown,
+      headerTabIndex,
+      headerAriaSort,
+      headerAriaLabel;
 
     if (sortEnabled || onHeaderClick) {
       // If this is a sortable header, clicking it should update the table data's sorting.
@@ -523,6 +530,8 @@ export default class Table extends PureComponent {
       const onClick = event => {
         sortEnabled &&
           sort({
+            defaultSortDirection,
+            event,
             sortBy: dataKey,
             sortDirection: newSortDirection,
           });
@@ -535,27 +544,32 @@ export default class Table extends PureComponent {
         }
       };
 
-      a11yProps['aria-label'] = column.props['aria-label'] || label || dataKey;
-      a11yProps.tabIndex = 0;
-      a11yProps.onClick = onClick;
-      a11yProps.onKeyDown = onKeyDown;
+      headerAriaLabel = column.props['aria-label'] || label || dataKey;
+      headerTabIndex = 0;
+      headerOnClick = onClick;
+      headerOnKeyDown = onKeyDown;
     }
 
     if (sortBy === dataKey) {
-      a11yProps['aria-sort'] =
+      headerAriaSort =
         sortDirection === SortDirection.ASC ? 'ascending' : 'descending';
     }
 
-    if (id) {
-      a11yProps.id = id;
-    }
-
+    // Avoid using object-spread syntax with multiple objects here,
+    // Since it results in an extra method call to 'babel-runtime/helpers/extends'
+    // See PR https://github.com/bvaughn/react-virtualized/pull/942
     return (
       <div
-        {...a11yProps}
-        key={`Header-Col${index}`}
+        aria-label={headerAriaLabel}
+        aria-sort={headerAriaSort}
         className={classNames}
-        style={style}>
+        id={id}
+        key={'Header-Col' + index}
+        onClick={headerOnClick}
+        onKeyDown={headerOnKeyDown}
+        role="columnheader"
+        style={style}
+        tabIndex={headerTabIndex}>
         {renderedHeader}
       </div>
     );
@@ -583,9 +597,8 @@ export default class Table extends PureComponent {
       typeof rowStyle === 'function' ? rowStyle({index}) : rowStyle;
     const rowData = rowGetter({index});
 
-    const columns = React.Children
-      .toArray(children)
-      .map((column, columnIndex) =>
+    const columns = React.Children.toArray(children).map(
+      (column, columnIndex) =>
         this._createColumn({
           column,
           columnIndex,
@@ -595,7 +608,7 @@ export default class Table extends PureComponent {
           rowIndex: index,
           scrollbarWidth,
         }),
-      );
+    );
 
     const className = cn('ReactVirtualized__Table__row', rowClass);
     const flattenedStyle = {
@@ -626,8 +639,9 @@ export default class Table extends PureComponent {
    * Determines the flex-shrink, flex-grow, and width values for a cell (header or column).
    */
   _getFlexStyleForColumn(column, customStyle = {}) {
-    const flexValue = `${column.props.flexGrow} ${column.props
-      .flexShrink} ${column.props.width}px`;
+    const flexValue = `${column.props.flexGrow} ${column.props.flexShrink} ${
+      column.props.width
+    }px`;
 
     const style = {
       ...customStyle,

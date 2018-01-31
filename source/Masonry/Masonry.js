@@ -9,6 +9,26 @@ import {
 
 import type {AnimationTimeoutId} from '../utils/requestAnimationTimeout';
 
+type Props = {
+  autoHeight: boolean,
+  cellCount: number,
+  cellMeasurerCache: CellMeasurerCache,
+  cellPositioner: Positioner,
+  cellRenderer: CellRenderer,
+  className: ?string,
+  height: number,
+  id: ?string,
+  keyMapper: KeyMapper,
+  onCellsRendered: ?OnCellsRenderedCallback,
+  onScroll: ?OnScrollCallback,
+  overscanByPixels: number,
+  role: string,
+  scrollingResetTimeInterval: number,
+  style: mixed,
+  tabIndex: number,
+  width: number,
+};
+
 const emptyObject = {};
 
 /**
@@ -45,9 +65,7 @@ export const DEFAULT_SCROLLING_RESET_TIME_INTERVAL = 150;
  *   The left position of all items within a column must align.
  *   (Items may not span multiple columns.)
  */
-export default class Masonry extends PureComponent {
-  props: Props;
-
+export default class Masonry extends PureComponent<Props> {
   static defaultProps = {
     autoHeight: false,
     keyMapper: identity,
@@ -172,7 +190,40 @@ export default class Masonry extends PureComponent {
     const shortestColumnSize = this._positionCache.shortestColumnSize;
     const measuredCellCount = this._positionCache.count;
 
-    // We need to measure more cells before layout
+    let startIndex = 0;
+    let stopIndex;
+
+    this._positionCache.range(
+      Math.max(0, scrollTop - overscanByPixels),
+      height + overscanByPixels * 2,
+      (index: number, left: number, top: number) => {
+        if (typeof stopIndex === 'undefined') {
+          startIndex = index;
+          stopIndex = index;
+        } else {
+          startIndex = Math.min(startIndex, index);
+          stopIndex = Math.max(stopIndex, index);
+        }
+
+        children.push(
+          cellRenderer({
+            index,
+            isScrolling,
+            key: keyMapper(index),
+            parent: this,
+            style: {
+              height: cellMeasurerCache.getHeight(index),
+              left,
+              position: 'absolute',
+              top,
+              width: cellMeasurerCache.getWidth(index),
+            },
+          }),
+        );
+      },
+    );
+
+    // We need to measure additional cells for this layout
     if (
       shortestColumnSize < scrollTop + height + overscanByPixels &&
       measuredCellCount < cellCount
@@ -192,6 +243,8 @@ export default class Masonry extends PureComponent {
         index < measuredCellCount + batchSize;
         index++
       ) {
+        stopIndex = index;
+
         children.push(
           cellRenderer({
             index: index,
@@ -204,43 +257,10 @@ export default class Masonry extends PureComponent {
           }),
         );
       }
-    } else {
-      let stopIndex;
-      let startIndex;
-
-      this._positionCache.range(
-        Math.max(0, scrollTop - overscanByPixels),
-        height + overscanByPixels * 2,
-        (index: number, left: number, top: number) => {
-          if (typeof startIndex === 'undefined') {
-            startIndex = index;
-            stopIndex = index;
-          } else {
-            startIndex = Math.min(startIndex, index);
-            stopIndex = Math.max(stopIndex, index);
-          }
-
-          children.push(
-            cellRenderer({
-              index,
-              isScrolling,
-              key: keyMapper(index),
-              parent: this,
-              style: {
-                height: cellMeasurerCache.getHeight(index),
-                left,
-                position: 'absolute',
-                top,
-                width: cellMeasurerCache.getWidth(index),
-              },
-            }),
-          );
-
-          this._startIndex = startIndex;
-          this._stopIndex = stopIndex;
-        },
-      );
     }
+
+    this._startIndex = startIndex;
+    this._stopIndex = stopIndex;
 
     return (
       <div
@@ -317,8 +337,9 @@ export default class Masonry extends PureComponent {
   _getEstimatedTotalHeight() {
     const {cellCount, cellMeasurerCache, width} = this.props;
 
-    const estimatedColumnCount = Math.floor(
-      width / cellMeasurerCache.defaultWidth,
+    const estimatedColumnCount = Math.max(
+      1,
+      Math.floor(width / cellMeasurerCache.defaultWidth),
     );
 
     return this._positionCache.estimateTotalHeight(
@@ -455,23 +476,3 @@ type Position = {
 };
 
 export type Positioner = (index: number) => Position;
-
-type Props = {
-  autoHeight: boolean,
-  cellCount: number,
-  cellMeasurerCache: CellMeasurerCache,
-  cellPositioner: Positioner,
-  cellRenderer: CellRenderer,
-  className: ?string,
-  height: number,
-  id: ?string,
-  keyMapper: KeyMapper,
-  onCellsRendered: ?OnCellsRenderedCallback,
-  onScroll: ?OnScrollCallback,
-  overscanByPixels: number,
-  role: string,
-  scrollingResetTimeInterval: number,
-  style: mixed,
-  tabIndex: number,
-  width: number,
-};

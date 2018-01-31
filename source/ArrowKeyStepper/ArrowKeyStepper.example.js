@@ -12,7 +12,17 @@ import Grid from '../Grid';
 import cn from 'classnames';
 import styles from './ArrowKeyStepper.example.css';
 
-export default class ArrowKeyStepperExample extends React.PureComponent {
+type State = {
+  mode: 'edges' | 'cells',
+  isClickable: boolean,
+  scrollToColumn: number,
+  scrollToRow: number,
+};
+
+export default class ArrowKeyStepperExample extends React.PureComponent<
+  {},
+  State,
+> {
   state = {
     mode: 'edges',
     isClickable: true,
@@ -54,7 +64,8 @@ export default class ArrowKeyStepperExample extends React.PureComponent {
               className={styles.Radio}
               type="radio"
               onChange={event =>
-                event.target.checked && this.setState({mode: 'cells'})}
+                event.target.checked && this.setState({mode: 'cells'})
+              }
               value="cells"
             />
             cells
@@ -66,7 +77,8 @@ export default class ArrowKeyStepperExample extends React.PureComponent {
               className={styles.Radio}
               type="radio"
               onChange={event =>
-                event.target.checked && this.setState({mode: 'edges'})}
+                event.target.checked && this.setState({mode: 'edges'})
+              }
               value="edges"
             />
             edges (default)
@@ -88,7 +100,6 @@ export default class ArrowKeyStepperExample extends React.PureComponent {
 
         <ArrowKeyStepper
           columnCount={100}
-          key={isClickable}
           isControlled={isClickable}
           onScrollToChange={isClickable ? this._selectCell : undefined}
           mode={mode}
@@ -117,7 +128,8 @@ export default class ArrowKeyStepperExample extends React.PureComponent {
                         scrollToColumn,
                         scrollToRow,
                         style,
-                      })}
+                      })
+                    }
                     rowHeight={this._getRowHeight}
                     rowCount={100}
                     scrollToColumn={scrollToColumn}
@@ -162,7 +174,8 @@ export default class ArrowKeyStepperExample extends React.PureComponent {
     });
 
     return (
-      <div
+      <span
+        role="none"
         className={className}
         key={key}
         onClick={
@@ -175,7 +188,7 @@ export default class ArrowKeyStepperExample extends React.PureComponent {
         }
         style={style}>
         {`r:${rowIndex}, c:${columnIndex}`}
-      </div>
+      </span>
     );
   };
 

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {findDOMNode} from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
 import {render} from '../TestUtils';
 import AutoSizer from './AutoSizer';
 
@@ -13,25 +12,25 @@ function DefaultChildComponent({height, width, foo, bar}) {
 }
 
 describe('AutoSizer', () => {
-  function getMarkup(
-    {
-      bar = 123,
-      ChildComponent = DefaultChildComponent,
-      defaultHeight = undefined,
-      defaultWidth = undefined,
-      disableHeight = false,
-      disableWidth = false,
-      foo = 456,
-      height = 100,
-      onResize,
-      paddingBottom = 0,
-      paddingLeft = 0,
-      paddingRight = 0,
-      paddingTop = 0,
-      width = 200,
-    } = {},
-  ) {
-    const style = {
+  function getMarkup({
+    bar = 123,
+    ChildComponent = DefaultChildComponent,
+    className = undefined,
+    defaultHeight = undefined,
+    defaultWidth = undefined,
+    disableHeight = false,
+    disableWidth = false,
+    foo = 456,
+    height = 100,
+    onResize,
+    paddingBottom = 0,
+    paddingLeft = 0,
+    paddingRight = 0,
+    paddingTop = 0,
+    style = undefined,
+    width = 200,
+  } = {}) {
+    const wrapperStyle = {
       boxSizing: 'border-box',
       height,
       paddingBottom,
@@ -44,13 +43,15 @@ describe('AutoSizer', () => {
     mockOffsetSize(width, height);
 
     return (
-      <div style={style}>
+      <div style={wrapperStyle}>
         <AutoSizer
+          className={className}
           defaultHeight={defaultHeight}
           defaultWidth={defaultWidth}
           disableHeight={disableHeight}
           disableWidth={disableWidth}
-          onResize={onResize}>
+          onResize={onResize}
+          style={style}>
           {({height, width}) => (
             <ChildComponent
               width={disableWidth ? undefined : width}
@@ -67,11 +68,11 @@ describe('AutoSizer', () => {
   // AutoSizer uses offsetWidth and offsetHeight.
   // Jest runs in JSDom which doesn't support measurements APIs.
   function mockOffsetSize(width, height) {
-    Object.defineProperty(Element.prototype, 'offsetHeight', {
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
       configurable: true,
       value: height,
     });
-    Object.defineProperty(Element.prototype, 'offsetWidth', {
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
       configurable: true,
       value: width,
     });
@@ -224,18 +225,16 @@ describe('AutoSizer', () => {
     });
   });
 
-  describe('server-side rendering', () => {
-    it('should render content with default widths and heights initially', () => {
-      const rendered = ReactDOMServer.renderToString(
-        getMarkup({
-          defaultHeight: 100,
-          defaultWidth: 200,
-          height: 400,
-          width: 800,
-        }),
-      );
-      expect(rendered).toContain('height:100');
-      expect(rendered).toContain('width:200');
+  describe('className and style', () => {
+    it('should use a custom :className if specified', () => {
+      const rendered = findDOMNode(render(getMarkup({className: 'foo'})));
+      expect(rendered.firstChild.className).toContain('foo');
+    });
+
+    it('should use a custom :style if specified', () => {
+      const style = {backgroundColor: 'red'};
+      const rendered = findDOMNode(render(getMarkup({style})));
+      expect(rendered.firstChild.style.backgroundColor).toEqual('red');
     });
   });
 });
