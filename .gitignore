@@ -1,8 +1,10 @@
 .DS_Store
 build
+docs
+playground
 coverage
-dist
 node_modules
 npm-debug.log
 styles.css
 .vscode
+.idea
