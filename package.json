@@ -6,7 +6,7 @@
   "version": "9.18.5",
   "homepage": "https://github.com/bvaughn/react-virtualized",
   "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
+  "module": "dist/commonjs/index.js",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "scripts": {
