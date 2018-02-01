@@ -19,6 +19,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Default row renderer for Table.
  */
+var babelPluginFlowReactPropTypes_proptype_RowRendererParams = require('./types').babelPluginFlowReactPropTypes_proptype_RowRendererParams || require('prop-types').any;
+
 function defaultRowRenderer(_ref) {
   var className = _ref.className,
       columns = _ref.columns,
@@ -75,4 +77,4 @@ function defaultRowRenderer(_ref) {
     columns
   );
 }
-defaultRowRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : require('./types').bpfrpt_proptype_RowRendererParams === require('prop-types').any ? {} : require('./types').bpfrpt_proptype_RowRendererParams;
+defaultRowRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : babelPluginFlowReactPropTypes_proptype_RowRendererParams === require('prop-types').any ? {} : babelPluginFlowReactPropTypes_proptype_RowRendererParams;

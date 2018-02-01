@@ -14,6 +14,12 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var babelPluginFlowReactPropTypes_proptype_VisibleCellRange = require('../types').babelPluginFlowReactPropTypes_proptype_VisibleCellRange || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_CellSizeGetter = require('../types').babelPluginFlowReactPropTypes_proptype_CellSizeGetter || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_Alignment = require('../types').babelPluginFlowReactPropTypes_proptype_Alignment || require('prop-types').any;
+
 /**
  * Just-in-time calculates and caches size and position information for a collection of cells.
  */

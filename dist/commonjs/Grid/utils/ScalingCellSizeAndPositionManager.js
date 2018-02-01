@@ -25,6 +25,12 @@ var _maxElementSize = require('./maxElementSize.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var babelPluginFlowReactPropTypes_proptype_VisibleCellRange = require('../types').babelPluginFlowReactPropTypes_proptype_VisibleCellRange || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_CellSizeGetter = require('../types').babelPluginFlowReactPropTypes_proptype_CellSizeGetter || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_Alignment = require('../types').babelPluginFlowReactPropTypes_proptype_Alignment || require('prop-types').any;
+
 /**
  * Browsers have scroll offset limitations (eg Chrome stops scrolling at ~33.5M pixels where as Edge tops out at ~1.5M pixels).
  * After a certain position, the browser won't allow the user to scroll further (even via JavaScript scroll offset adjustments).

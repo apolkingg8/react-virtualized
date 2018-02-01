@@ -275,9 +275,7 @@ WindowScroller.propTypes = process.env.NODE_ENV === 'production' ? null : {
 
 
   /** Element to attach scroll event listeners. Defaults to window. */
-  scrollElement: require('prop-types').oneOfType([require('prop-types').any, function () {
-    return (typeof Element === 'function' ? require('prop-types').instanceOf(Element) : require('prop-types').any).apply(this, arguments);
-  }]),
+  scrollElement: require('prop-types').oneOfType([require('prop-types').any, typeof Element === 'function' ? require('prop-types').instanceOf(Element) : require('prop-types').any]),
 
   /**
    * Wait this amount of time after the last scroll event before resetting child `pointer-events`.

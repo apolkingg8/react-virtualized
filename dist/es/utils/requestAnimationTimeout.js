@@ -1,8 +1,12 @@
 import { caf, raf } from './animationFrame';
 
-var bpfrpt_proptype_AnimationTimeoutId = process.env.NODE_ENV === 'production' ? null : {
-  id: PropTypes.number.isRequired
+var babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId = process.env.NODE_ENV === 'production' ? null : {
+  id: require('prop-types').number.isRequired
 };
+if (!(process.env.NODE_ENV === 'production') && typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId', {
+  value: babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId,
+  configurable: true
+});
 
 
 export var cancelAnimationTimeout = function cancelAnimationTimeout(frame) {
@@ -32,5 +36,3 @@ export var requestAnimationTimeout = function requestAnimationTimeout(callback, 
 
   return frame;
 };
-import PropTypes from 'prop-types';
-export { bpfrpt_proptype_AnimationTimeoutId };

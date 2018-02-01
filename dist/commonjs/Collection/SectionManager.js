@@ -22,11 +22,16 @@ var _Section2 = _interopRequireDefault(_Section);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SECTION_SIZE = 100; /**
-                         * Window Sections are used to group nearby cells.
-                         * This enables us to more quickly determine which cells to display in a given region of the Window.
-                         * 
-                         */
+var babelPluginFlowReactPropTypes_proptype_SizeAndPositionInfo = require('./types').babelPluginFlowReactPropTypes_proptype_SizeAndPositionInfo || require('prop-types').any; /**
+                                                                                                                                                                              * Window Sections are used to group nearby cells.
+                                                                                                                                                                              * This enables us to more quickly determine which cells to display in a given region of the Window.
+                                                                                                                                                                              * 
+                                                                                                                                                                              */
+
+
+var babelPluginFlowReactPropTypes_proptype_Index = require('./types').babelPluginFlowReactPropTypes_proptype_Index || require('prop-types').any;
+
+var SECTION_SIZE = 100;
 
 /**
  * Contains 0 to many Sections.

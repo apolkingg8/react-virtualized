@@ -4,6 +4,31 @@ import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
 import _createClass from 'babel-runtime/helpers/createClass';
 import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
 import _inherits from 'babel-runtime/helpers/inherits';
+
+var babelPluginFlowReactPropTypes_proptype_Alignment = require('./types').babelPluginFlowReactPropTypes_proptype_Alignment || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_OverscanIndicesGetter = require('./types').babelPluginFlowReactPropTypes_proptype_OverscanIndicesGetter || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_RenderedSection = require('./types').babelPluginFlowReactPropTypes_proptype_RenderedSection || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_ScrollbarPresenceChange = require('./types').babelPluginFlowReactPropTypes_proptype_ScrollbarPresenceChange || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_Scroll = require('./types').babelPluginFlowReactPropTypes_proptype_Scroll || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_NoContentRenderer = require('./types').babelPluginFlowReactPropTypes_proptype_NoContentRenderer || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_CellSizeGetter = require('./types').babelPluginFlowReactPropTypes_proptype_CellSizeGetter || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_CellSize = require('./types').babelPluginFlowReactPropTypes_proptype_CellSize || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_CellPosition = require('./types').babelPluginFlowReactPropTypes_proptype_CellPosition || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_CellRangeRenderer = require('./types').babelPluginFlowReactPropTypes_proptype_CellRangeRenderer || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_CellRenderer = require('./types').babelPluginFlowReactPropTypes_proptype_CellRenderer || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId = require('../utils/requestAnimationTimeout').babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId || require('prop-types').any;
+
 import * as React from 'react';
 import cn from 'classnames';
 import calculateSizeAndPositionDataAndUpdateScrollOffset from './utils/calculateSizeAndPositionDataAndUpdateScrollOffset';
@@ -1154,120 +1179,112 @@ Grid.defaultProps = {
   tabIndex: 0
 };
 Grid.propTypes = process.env.NODE_ENV === 'production' ? null : {
-  "aria-label": PropTypes.string.isRequired,
-  "aria-readonly": PropTypes.bool,
+  "aria-label": require('prop-types').string.isRequired,
+  "aria-readonly": require('prop-types').bool,
 
 
   /**
    * Set the width of the inner scrollable container to 'auto'.
    * This is useful for single-column Grids to ensure that the column doesn't extend below a vertical scrollbar.
    */
-  autoContainerWidth: PropTypes.bool.isRequired,
+  autoContainerWidth: require('prop-types').bool.isRequired,
 
 
   /**
    * Removes fixed height from the scrollingContainer so that the total height of rows can stretch the window.
    * Intended for use with WindowScroller
    */
-  autoHeight: PropTypes.bool.isRequired,
+  autoHeight: require('prop-types').bool.isRequired,
 
 
   /**
    * Removes fixed width from the scrollingContainer so that the total width of rows can stretch the window.
    * Intended for use with WindowScroller
    */
-  autoWidth: PropTypes.bool.isRequired,
+  autoWidth: require('prop-types').bool.isRequired,
 
 
   /** Responsible for rendering a cell given an row and column index.  */
-  cellRenderer: function cellRenderer() {
-    return (typeof bpfrpt_proptype_CellRenderer === 'function' ? bpfrpt_proptype_CellRenderer.isRequired ? bpfrpt_proptype_CellRenderer.isRequired : bpfrpt_proptype_CellRenderer : PropTypes.shape(bpfrpt_proptype_CellRenderer).isRequired).apply(this, arguments);
-  },
+  cellRenderer: typeof babelPluginFlowReactPropTypes_proptype_CellRenderer === 'function' ? babelPluginFlowReactPropTypes_proptype_CellRenderer.isRequired ? babelPluginFlowReactPropTypes_proptype_CellRenderer.isRequired : babelPluginFlowReactPropTypes_proptype_CellRenderer : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_CellRenderer).isRequired,
 
 
   /** Responsible for rendering a group of cells given their index ranges.  */
-  cellRangeRenderer: function cellRangeRenderer() {
-    return (typeof bpfrpt_proptype_CellRangeRenderer === 'function' ? bpfrpt_proptype_CellRangeRenderer.isRequired ? bpfrpt_proptype_CellRangeRenderer.isRequired : bpfrpt_proptype_CellRangeRenderer : PropTypes.shape(bpfrpt_proptype_CellRangeRenderer).isRequired).apply(this, arguments);
-  },
+  cellRangeRenderer: typeof babelPluginFlowReactPropTypes_proptype_CellRangeRenderer === 'function' ? babelPluginFlowReactPropTypes_proptype_CellRangeRenderer.isRequired ? babelPluginFlowReactPropTypes_proptype_CellRangeRenderer.isRequired : babelPluginFlowReactPropTypes_proptype_CellRangeRenderer : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_CellRangeRenderer).isRequired,
 
 
   /** Optional custom CSS class name to attach to root Grid element.  */
-  className: PropTypes.string,
+  className: require('prop-types').string,
 
 
   /** Number of columns in grid.  */
-  columnCount: PropTypes.number.isRequired,
+  columnCount: require('prop-types').number.isRequired,
 
 
   /** Either a fixed column width (number) or a function that returns the width of a column given its index.  */
-  columnWidth: function columnWidth() {
-    return (typeof bpfrpt_proptype_CellSize === 'function' ? bpfrpt_proptype_CellSize.isRequired ? bpfrpt_proptype_CellSize.isRequired : bpfrpt_proptype_CellSize : PropTypes.shape(bpfrpt_proptype_CellSize).isRequired).apply(this, arguments);
-  },
+  columnWidth: typeof babelPluginFlowReactPropTypes_proptype_CellSize === 'function' ? babelPluginFlowReactPropTypes_proptype_CellSize.isRequired ? babelPluginFlowReactPropTypes_proptype_CellSize.isRequired : babelPluginFlowReactPropTypes_proptype_CellSize : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_CellSize).isRequired,
 
 
   /** Unfiltered props for the Grid container. */
-  containerProps: PropTypes.object,
+  containerProps: require('prop-types').object,
 
 
   /** ARIA role for the cell-container.  */
-  containerRole: PropTypes.string.isRequired,
+  containerRole: require('prop-types').string.isRequired,
 
 
   /** Optional inline style applied to inner cell-container */
-  containerStyle: PropTypes.object.isRequired,
+  containerStyle: require('prop-types').object.isRequired,
 
 
   /**
    * If CellMeasurer is used to measure this Grid's children, this should be a pointer to its CellMeasurerCache.
    * A shared CellMeasurerCache reference enables Grid and CellMeasurer to share measurement data.
    */
-  deferredMeasurementCache: PropTypes.object,
+  deferredMeasurementCache: require('prop-types').object,
 
 
   /**
    * Used to estimate the total width of a Grid before all of its columns have actually been measured.
    * The estimated total width is adjusted as columns are rendered.
    */
-  estimatedColumnSize: PropTypes.number.isRequired,
+  estimatedColumnSize: require('prop-types').number.isRequired,
 
 
   /**
    * Used to estimate the total height of a Grid before all of its rows have actually been measured.
    * The estimated total height is adjusted as rows are rendered.
    */
-  estimatedRowSize: PropTypes.number.isRequired,
+  estimatedRowSize: require('prop-types').number.isRequired,
 
 
   /** Exposed for testing purposes only.  */
-  getScrollbarSize: PropTypes.func.isRequired,
+  getScrollbarSize: require('prop-types').func.isRequired,
 
 
   /** Height of Grid; this property determines the number of visible (vs virtualized) rows.  */
-  height: PropTypes.number.isRequired,
+  height: require('prop-types').number.isRequired,
 
 
   /** Optional custom id to attach to root Grid element.  */
-  id: PropTypes.string,
+  id: require('prop-types').string,
 
 
   /**
    * Override internal is-scrolling state tracking.
    * This property is primarily intended for use with the WindowScroller component.
    */
-  isScrolling: PropTypes.bool,
+  isScrolling: require('prop-types').bool,
 
 
   /** Optional renderer to be used in place of rows when either :rowCount or :columnCount is 0.  */
-  noContentRenderer: function noContentRenderer() {
-    return (typeof bpfrpt_proptype_NoContentRenderer === 'function' ? bpfrpt_proptype_NoContentRenderer.isRequired ? bpfrpt_proptype_NoContentRenderer.isRequired : bpfrpt_proptype_NoContentRenderer : PropTypes.shape(bpfrpt_proptype_NoContentRenderer).isRequired).apply(this, arguments);
-  },
+  noContentRenderer: typeof babelPluginFlowReactPropTypes_proptype_NoContentRenderer === 'function' ? babelPluginFlowReactPropTypes_proptype_NoContentRenderer.isRequired ? babelPluginFlowReactPropTypes_proptype_NoContentRenderer.isRequired : babelPluginFlowReactPropTypes_proptype_NoContentRenderer : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_NoContentRenderer).isRequired,
 
 
   /**
    * Callback invoked whenever the scroll offset changes within the inner scrollable region.
    * This callback can be used to sync scrolling between lists, tables, or grids.
    */
-  onScroll: PropTypes.func.isRequired,
+  onScroll: require('prop-types').func.isRequired,
 
 
   /**
@@ -1275,59 +1292,55 @@ Grid.propTypes = process.env.NODE_ENV === 'production' ? null : {
    * This prop is not intended for end-user use;
    * It is used by MultiGrid to support fixed-row/fixed-column scroll syncing.
    */
-  onScrollbarPresenceChange: PropTypes.func.isRequired,
+  onScrollbarPresenceChange: require('prop-types').func.isRequired,
 
 
   /** Callback invoked with information about the section of the Grid that was just rendered.  */
-  onSectionRendered: PropTypes.func.isRequired,
+  onSectionRendered: require('prop-types').func.isRequired,
 
 
   /**
    * Number of columns to render before/after the visible section of the grid.
    * These columns can help for smoother scrolling on touch devices or browsers that send scroll events infrequently.
    */
-  overscanColumnCount: PropTypes.number.isRequired,
+  overscanColumnCount: require('prop-types').number.isRequired,
 
 
   /**
    * Calculates the number of cells to overscan before and after a specified range.
    * This function ensures that overscanning doesn't exceed the available cells.
    */
-  overscanIndicesGetter: function overscanIndicesGetter() {
-    return (typeof bpfrpt_proptype_OverscanIndicesGetter === 'function' ? bpfrpt_proptype_OverscanIndicesGetter.isRequired ? bpfrpt_proptype_OverscanIndicesGetter.isRequired : bpfrpt_proptype_OverscanIndicesGetter : PropTypes.shape(bpfrpt_proptype_OverscanIndicesGetter).isRequired).apply(this, arguments);
-  },
+  overscanIndicesGetter: typeof babelPluginFlowReactPropTypes_proptype_OverscanIndicesGetter === 'function' ? babelPluginFlowReactPropTypes_proptype_OverscanIndicesGetter.isRequired ? babelPluginFlowReactPropTypes_proptype_OverscanIndicesGetter.isRequired : babelPluginFlowReactPropTypes_proptype_OverscanIndicesGetter : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_OverscanIndicesGetter).isRequired,
 
 
   /**
    * Number of rows to render above/below the visible section of the grid.
    * These rows can help for smoother scrolling on touch devices or browsers that send scroll events infrequently.
    */
-  overscanRowCount: PropTypes.number.isRequired,
+  overscanRowCount: require('prop-types').number.isRequired,
 
 
   /** ARIA role for the grid element.  */
-  role: PropTypes.string.isRequired,
+  role: require('prop-types').string.isRequired,
 
 
   /**
    * Either a fixed row height (number) or a function that returns the height of a row given its index.
    * Should implement the following interface: ({ index: number }): number
    */
-  rowHeight: function rowHeight() {
-    return (typeof bpfrpt_proptype_CellSize === 'function' ? bpfrpt_proptype_CellSize.isRequired ? bpfrpt_proptype_CellSize.isRequired : bpfrpt_proptype_CellSize : PropTypes.shape(bpfrpt_proptype_CellSize).isRequired).apply(this, arguments);
-  },
+  rowHeight: typeof babelPluginFlowReactPropTypes_proptype_CellSize === 'function' ? babelPluginFlowReactPropTypes_proptype_CellSize.isRequired ? babelPluginFlowReactPropTypes_proptype_CellSize.isRequired : babelPluginFlowReactPropTypes_proptype_CellSize : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_CellSize).isRequired,
 
 
   /** Number of rows in grid.  */
-  rowCount: PropTypes.number.isRequired,
+  rowCount: require('prop-types').number.isRequired,
 
 
   /** Wait this amount of time after the last scroll event before resetting Grid `pointer-events`. */
-  scrollingResetTimeInterval: PropTypes.number.isRequired,
+  scrollingResetTimeInterval: require('prop-types').number.isRequired,
 
 
   /** Horizontal offset. */
-  scrollLeft: PropTypes.number,
+  scrollLeft: require('prop-types').number,
 
 
   /**
@@ -1335,45 +1348,30 @@ Grid.propTypes = process.env.NODE_ENV === 'production' ? null : {
    * The default ("auto") scrolls the least amount possible to ensure that the specified cell is fully visible.
    * Use "start" to align cells to the top/left of the Grid and "end" to align bottom/right.
    */
-  scrollToAlignment: function scrollToAlignment() {
-    return (typeof bpfrpt_proptype_Alignment === 'function' ? bpfrpt_proptype_Alignment.isRequired ? bpfrpt_proptype_Alignment.isRequired : bpfrpt_proptype_Alignment : PropTypes.shape(bpfrpt_proptype_Alignment).isRequired).apply(this, arguments);
-  },
+  scrollToAlignment: typeof babelPluginFlowReactPropTypes_proptype_Alignment === 'function' ? babelPluginFlowReactPropTypes_proptype_Alignment.isRequired ? babelPluginFlowReactPropTypes_proptype_Alignment.isRequired : babelPluginFlowReactPropTypes_proptype_Alignment : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_Alignment).isRequired,
 
 
   /** Column index to ensure visible (by forcefully scrolling if necessary) */
-  scrollToColumn: PropTypes.number.isRequired,
+  scrollToColumn: require('prop-types').number.isRequired,
 
 
   /** Vertical offset. */
-  scrollTop: PropTypes.number,
+  scrollTop: require('prop-types').number,
 
 
   /** Row index to ensure visible (by forcefully scrolling if necessary) */
-  scrollToRow: PropTypes.number.isRequired,
+  scrollToRow: require('prop-types').number.isRequired,
 
 
   /** Optional inline style */
-  style: PropTypes.object.isRequired,
+  style: require('prop-types').object.isRequired,
 
 
   /** Tab index for focus */
-  tabIndex: PropTypes.number,
+  tabIndex: require('prop-types').number,
 
 
   /** Width of Grid; this property determines the number of visible (vs virtualized) columns.  */
-  width: PropTypes.number.isRequired
+  width: require('prop-types').number.isRequired
 };
 export default Grid;
-import { bpfrpt_proptype_CellRenderer } from './types';
-import { bpfrpt_proptype_CellRangeRenderer } from './types';
-import { bpfrpt_proptype_CellPosition } from './types';
-import { bpfrpt_proptype_CellSize } from './types';
-import { bpfrpt_proptype_CellSizeGetter } from './types';
-import { bpfrpt_proptype_NoContentRenderer } from './types';
-import { bpfrpt_proptype_Scroll } from './types';
-import { bpfrpt_proptype_ScrollbarPresenceChange } from './types';
-import { bpfrpt_proptype_RenderedSection } from './types';
-import { bpfrpt_proptype_OverscanIndicesGetter } from './types';
-import { bpfrpt_proptype_Alignment } from './types';
-import { bpfrpt_proptype_AnimationTimeoutId } from '../utils/requestAnimationTimeout';
-import PropTypes from 'prop-types';

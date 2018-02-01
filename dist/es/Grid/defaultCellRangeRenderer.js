@@ -5,6 +5,8 @@
  * This renderer supports cell-caching while the user is scrolling.
  */
 
+var babelPluginFlowReactPropTypes_proptype_CellRangeRendererParams = require('./types').babelPluginFlowReactPropTypes_proptype_CellRangeRendererParams || require('prop-types').any;
+
 export default function defaultCellRangeRenderer(_ref) {
   var cellCache = _ref.cellCache,
       cellRenderer = _ref.cellRenderer,
@@ -137,4 +139,3 @@ function warnAboutMissingStyle(parent, renderedCell) {
     }
   }
 }
-import { bpfrpt_proptype_CellRangeRendererParams } from './types';

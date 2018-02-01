@@ -58,6 +58,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Renders scattered or non-linear data.
  * Unlike Grid, which renders checkerboard data, Collection can render arbitrarily positioned- even overlapping- data.
  */
+var babelPluginFlowReactPropTypes_proptype_SizeInfo = require('./types').babelPluginFlowReactPropTypes_proptype_SizeInfo || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_ScrollPosition = require('./types').babelPluginFlowReactPropTypes_proptype_ScrollPosition || require('prop-types').any;
+
 var Collection = function (_PureComponent) {
   (0, _inherits3.default)(Collection, _PureComponent);
 

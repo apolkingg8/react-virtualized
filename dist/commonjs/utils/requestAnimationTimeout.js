@@ -7,11 +7,11 @@ exports.requestAnimationTimeout = exports.cancelAnimationTimeout = undefined;
 
 var _animationFrame = require('./animationFrame');
 
-var bpfrpt_proptype_AnimationTimeoutId = process.env.NODE_ENV === 'production' ? null : {
+var babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId = process.env.NODE_ENV === 'production' ? null : {
   id: require('prop-types').number.isRequired
 };
-if (!(process.env.NODE_ENV === 'production') && typeof exports !== 'undefined') Object.defineProperty(exports, 'bpfrpt_proptype_AnimationTimeoutId', {
-  value: bpfrpt_proptype_AnimationTimeoutId,
+if (!(process.env.NODE_ENV === 'production') && typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId', {
+  value: babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId,
   configurable: true
 });
 var cancelAnimationTimeout = exports.cancelAnimationTimeout = function cancelAnimationTimeout(frame) {

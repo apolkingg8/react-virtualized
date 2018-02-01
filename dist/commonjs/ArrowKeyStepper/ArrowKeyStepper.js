@@ -32,6 +32,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var babelPluginFlowReactPropTypes_proptype_RenderedSection = require('../Grid').babelPluginFlowReactPropTypes_proptype_RenderedSection || require('prop-types').any;
+
+var babelPluginFlowReactPropTypes_proptype_ScrollIndices = require('./types').babelPluginFlowReactPropTypes_proptype_ScrollIndices || require('prop-types').any;
+
 /**
  * This HOC decorates a virtualized component and responds to arrow-key events by scrolling one row or column at a time.
  */

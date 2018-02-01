@@ -9,6 +9,8 @@ import cn from 'classnames';
 import PositionCache from './PositionCache';
 import { requestAnimationTimeout, cancelAnimationTimeout } from '../utils/requestAnimationTimeout';
 
+var babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId = require('../utils/requestAnimationTimeout').babelPluginFlowReactPropTypes_proptype_AnimationTimeoutId || require('prop-types').any;
+
 var emptyObject = {};
 
 /**
@@ -54,7 +56,14 @@ var Masonry = function (_PureComponent) {
 
     var _this = _possibleConstructorReturn(this, (Masonry.__proto__ || _Object$getPrototypeOf(Masonry)).call(this, props, context));
 
-    _initialiseProps.call(_this);
+    _this._invalidateOnUpdateStartIndex = null;
+    _this._invalidateOnUpdateStopIndex = null;
+    _this._positionCache = new PositionCache();
+    _this._startIndex = null;
+    _this._startIndexMemoized = null;
+    _this._stopIndex = null;
+    _this._stopIndexMemoized = null;
+
 
     _this.state = {
       isScrolling: false,
@@ -408,51 +417,28 @@ Masonry.defaultProps = {
   tabIndex: 0
 };
 Masonry.propTypes = process.env.NODE_ENV === 'production' ? null : {
-  autoHeight: PropTypes.bool.isRequired,
-  cellCount: PropTypes.number.isRequired,
-  cellMeasurerCache: function cellMeasurerCache() {
-    return (typeof CellMeasurerCache === 'function' ? PropTypes.instanceOf(CellMeasurerCache).isRequired : PropTypes.any.isRequired).apply(this, arguments);
-  },
-  cellPositioner: function cellPositioner() {
-    return (typeof Positioner === 'function' ? PropTypes.instanceOf(Positioner).isRequired : PropTypes.any.isRequired).apply(this, arguments);
-  },
-  cellRenderer: function cellRenderer() {
-    return (typeof CellRenderer === 'function' ? PropTypes.instanceOf(CellRenderer).isRequired : PropTypes.any.isRequired).apply(this, arguments);
-  },
-  className: PropTypes.string,
-  height: PropTypes.number.isRequired,
-  id: PropTypes.string,
-  keyMapper: function keyMapper() {
-    return (typeof KeyMapper === 'function' ? PropTypes.instanceOf(KeyMapper).isRequired : PropTypes.any.isRequired).apply(this, arguments);
-  },
-  onCellsRendered: function onCellsRendered() {
-    return (typeof OnCellsRenderedCallback === 'function' ? PropTypes.instanceOf(OnCellsRenderedCallback) : PropTypes.any).apply(this, arguments);
-  },
-  onScroll: function onScroll() {
-    return (typeof OnScrollCallback === 'function' ? PropTypes.instanceOf(OnScrollCallback) : PropTypes.any).apply(this, arguments);
-  },
-  overscanByPixels: PropTypes.number.isRequired,
-  role: PropTypes.string.isRequired,
-  scrollingResetTimeInterval: PropTypes.number.isRequired,
+  autoHeight: require('prop-types').bool.isRequired,
+  cellCount: require('prop-types').number.isRequired,
+  cellMeasurerCache: typeof CellMeasurerCache === 'function' ? require('prop-types').instanceOf(CellMeasurerCache).isRequired : require('prop-types').any.isRequired,
+  cellPositioner: typeof Positioner === 'function' ? require('prop-types').instanceOf(Positioner).isRequired : require('prop-types').any.isRequired,
+  cellRenderer: typeof CellRenderer === 'function' ? require('prop-types').instanceOf(CellRenderer).isRequired : require('prop-types').any.isRequired,
+  className: require('prop-types').string,
+  height: require('prop-types').number.isRequired,
+  id: require('prop-types').string,
+  keyMapper: typeof KeyMapper === 'function' ? require('prop-types').instanceOf(KeyMapper).isRequired : require('prop-types').any.isRequired,
+  onCellsRendered: typeof OnCellsRenderedCallback === 'function' ? require('prop-types').instanceOf(OnCellsRenderedCallback) : require('prop-types').any,
+  onScroll: typeof OnScrollCallback === 'function' ? require('prop-types').instanceOf(OnScrollCallback) : require('prop-types').any,
+  overscanByPixels: require('prop-types').number.isRequired,
+  role: require('prop-types').string.isRequired,
+  scrollingResetTimeInterval: require('prop-types').number.isRequired,
   style: function style(props, propName, componentName) {
     if (!Object.prototype.hasOwnProperty.call(props, propName)) {
       throw new Error('Prop `' + propName + '` has type \'any\' or \'mixed\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
     }
   },
-  tabIndex: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired
+  tabIndex: require('prop-types').number.isRequired,
+  width: require('prop-types').number.isRequired
 };
-
-var _initialiseProps = function _initialiseProps() {
-  this._invalidateOnUpdateStartIndex = null;
-  this._invalidateOnUpdateStopIndex = null;
-  this._positionCache = new PositionCache();
-  this._startIndex = null;
-  this._startIndexMemoized = null;
-  this._stopIndex = null;
-  this._stopIndexMemoized = null;
-};
-
 export default Masonry;
 
 
@@ -462,14 +448,18 @@ function identity(value) {
 
 function noop() {}
 
-var bpfrpt_proptype_CellMeasurerCache = process.env.NODE_ENV === 'production' ? null : {
-  defaultHeight: PropTypes.number.isRequired,
-  defaultWidth: PropTypes.number.isRequired,
-  getHeight: PropTypes.func.isRequired,
-  getWidth: PropTypes.func.isRequired
+var babelPluginFlowReactPropTypes_proptype_CellMeasurerCache = process.env.NODE_ENV === 'production' ? null : {
+  defaultHeight: require('prop-types').number.isRequired,
+  defaultWidth: require('prop-types').number.isRequired,
+  getHeight: require('prop-types').func.isRequired,
+  getWidth: require('prop-types').func.isRequired
 };
-var bpfrpt_proptype_Positioner = process.env.NODE_ENV === 'production' ? null : PropTypes.func;
-import { bpfrpt_proptype_AnimationTimeoutId } from '../utils/requestAnimationTimeout';
-import PropTypes from 'prop-types';
-export { bpfrpt_proptype_CellMeasurerCache };
-export { bpfrpt_proptype_Positioner };
+if (!(process.env.NODE_ENV === 'production') && typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_CellMeasurerCache', {
+  value: babelPluginFlowReactPropTypes_proptype_CellMeasurerCache,
+  configurable: true
+});
+var babelPluginFlowReactPropTypes_proptype_Positioner = process.env.NODE_ENV === 'production' ? null : require('prop-types').func;
+if (!(process.env.NODE_ENV === 'production') && typeof exports !== 'undefined') Object.defineProperty(exports, 'babelPluginFlowReactPropTypes_proptype_Positioner', {
+  value: babelPluginFlowReactPropTypes_proptype_Positioner,
+  configurable: true
+});

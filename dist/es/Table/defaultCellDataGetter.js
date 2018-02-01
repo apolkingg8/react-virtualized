@@ -5,6 +5,8 @@
  * This function expects to operate on either a vanilla Object or an Immutable Map.
  * You should override the column's cellDataGetter if your data is some other type of object.
  */
+var babelPluginFlowReactPropTypes_proptype_CellDataGetterParams = require('./types').babelPluginFlowReactPropTypes_proptype_CellDataGetterParams || require('prop-types').any;
+
 export default function defaultCellDataGetter(_ref) {
   var dataKey = _ref.dataKey,
       rowData = _ref.rowData;
@@ -15,4 +17,3 @@ export default function defaultCellDataGetter(_ref) {
     return rowData[dataKey];
   }
 }
-import { bpfrpt_proptype_CellDataGetterParams } from './types';

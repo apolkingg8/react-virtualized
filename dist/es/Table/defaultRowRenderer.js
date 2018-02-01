@@ -1,10 +1,11 @@
 import _extends from 'babel-runtime/helpers/extends';
 import React from 'react';
 
-
 /**
  * Default row renderer for Table.
  */
+var babelPluginFlowReactPropTypes_proptype_RowRendererParams = require('./types').babelPluginFlowReactPropTypes_proptype_RowRendererParams || require('prop-types').any;
+
 export default function defaultRowRenderer(_ref) {
   var className = _ref.className,
       columns = _ref.columns,
@@ -61,6 +62,4 @@ export default function defaultRowRenderer(_ref) {
     columns
   );
 }
-defaultRowRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : bpfrpt_proptype_RowRendererParams === PropTypes.any ? {} : bpfrpt_proptype_RowRendererParams;
-import { bpfrpt_proptype_RowRendererParams } from './types';
-import PropTypes from 'prop-types';
+defaultRowRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : babelPluginFlowReactPropTypes_proptype_RowRendererParams === require('prop-types').any ? {} : babelPluginFlowReactPropTypes_proptype_RowRendererParams;

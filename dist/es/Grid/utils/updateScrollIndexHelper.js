@@ -1,4 +1,6 @@
+var babelPluginFlowReactPropTypes_proptype_CellSize = require('../types').babelPluginFlowReactPropTypes_proptype_CellSize || require('prop-types').any;
 
+var babelPluginFlowReactPropTypes_proptype_Alignment = require('../types').babelPluginFlowReactPropTypes_proptype_Alignment || require('prop-types').any;
 
 import ScalingCellSizeAndPositionManager from './ScalingCellSizeAndPositionManager.js';
 
@@ -43,5 +45,3 @@ export default function updateScrollIndexHelper(_ref) {
     }
   }
 }
-import { bpfrpt_proptype_Alignment } from '../types';
-import { bpfrpt_proptype_CellSize } from '../types';

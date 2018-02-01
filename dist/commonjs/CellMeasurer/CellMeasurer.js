@@ -184,9 +184,7 @@ var CellMeasurer = function (_React$PureComponent) {
 
 CellMeasurer.__internalCellMeasurerFlag = false;
 CellMeasurer.propTypes = process.env.NODE_ENV === 'production' ? null : {
-  cache: function cache() {
-    return (typeof _CellMeasurerCache2.default === 'function' ? require('prop-types').instanceOf(_CellMeasurerCache2.default).isRequired : require('prop-types').any.isRequired).apply(this, arguments);
-  },
+  cache: typeof _CellMeasurerCache2.default === 'function' ? require('prop-types').instanceOf(_CellMeasurerCache2.default).isRequired : require('prop-types').any.isRequired,
   children: require('prop-types').oneOfType([require('prop-types').func, require('prop-types').node]).isRequired,
   columnIndex: require('prop-types').number,
   index: require('prop-types').number,

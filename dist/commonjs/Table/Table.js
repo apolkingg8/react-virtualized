@@ -64,6 +64,8 @@ var _SortDirection2 = _interopRequireDefault(_SortDirection);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var babelPluginFlowReactPropTypes_proptype_CellPosition = require('../Grid').babelPluginFlowReactPropTypes_proptype_CellPosition || require('prop-types').any;
+
 /**
  * Table component with fixed headers and virtualized rows for improved performance with large data sets.
  * This component expects explicit width, height, and padding parameters.

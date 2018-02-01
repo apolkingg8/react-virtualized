@@ -1,5 +1,6 @@
 import React from 'react';
 
+var babelPluginFlowReactPropTypes_proptype_HeaderRowRendererParams = require('./types').babelPluginFlowReactPropTypes_proptype_HeaderRowRendererParams || require('prop-types').any;
 
 export default function defaultHeaderRowRenderer(_ref) {
   var className = _ref.className,
@@ -12,6 +13,4 @@ export default function defaultHeaderRowRenderer(_ref) {
     columns
   );
 }
-defaultHeaderRowRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : bpfrpt_proptype_HeaderRowRendererParams === PropTypes.any ? {} : bpfrpt_proptype_HeaderRowRendererParams;
-import { bpfrpt_proptype_HeaderRowRendererParams } from './types';
-import PropTypes from 'prop-types';
+defaultHeaderRowRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : babelPluginFlowReactPropTypes_proptype_HeaderRowRendererParams === require('prop-types').any ? {} : babelPluginFlowReactPropTypes_proptype_HeaderRowRendererParams;

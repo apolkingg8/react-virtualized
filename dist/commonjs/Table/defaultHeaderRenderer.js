@@ -18,6 +18,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * Default table header renderer.
  */
+var babelPluginFlowReactPropTypes_proptype_HeaderRendererParams = require('./types').babelPluginFlowReactPropTypes_proptype_HeaderRendererParams || require('prop-types').any;
+
 function defaultHeaderRenderer(_ref) {
   var dataKey = _ref.dataKey,
       label = _ref.label,
@@ -40,4 +42,4 @@ function defaultHeaderRenderer(_ref) {
 
   return children;
 }
-defaultHeaderRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : require('./types').bpfrpt_proptype_HeaderRendererParams === require('prop-types').any ? {} : require('./types').bpfrpt_proptype_HeaderRendererParams;
+defaultHeaderRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : babelPluginFlowReactPropTypes_proptype_HeaderRendererParams === require('prop-types').any ? {} : babelPluginFlowReactPropTypes_proptype_HeaderRendererParams;

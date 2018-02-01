@@ -153,39 +153,38 @@ AutoSizer.defaultProps = {
 };
 AutoSizer.propTypes = process.env.NODE_ENV === 'production' ? null : {
   /** Function responsible for rendering children.*/
-  children: PropTypes.func.isRequired,
+  children: require('prop-types').func.isRequired,
 
 
   /** Optional custom CSS class name to attach to root AutoSizer element.  */
-  className: PropTypes.string,
+  className: require('prop-types').string,
 
 
   /** Default height to use for initial render; useful for SSR */
-  defaultHeight: PropTypes.number,
+  defaultHeight: require('prop-types').number,
 
 
   /** Default width to use for initial render; useful for SSR */
-  defaultWidth: PropTypes.number,
+  defaultWidth: require('prop-types').number,
 
 
   /** Disable dynamic :height property */
-  disableHeight: PropTypes.bool.isRequired,
+  disableHeight: require('prop-types').bool.isRequired,
 
 
   /** Disable dynamic :width property */
-  disableWidth: PropTypes.bool.isRequired,
+  disableWidth: require('prop-types').bool.isRequired,
 
 
   /** Nonce of the inlined stylesheet for Content Security Policy */
-  nonce: PropTypes.string,
+  nonce: require('prop-types').string,
 
 
   /** Callback to be invoked on-resize */
-  onResize: PropTypes.func.isRequired,
+  onResize: require('prop-types').func.isRequired,
 
 
   /** Optional inline style */
-  style: PropTypes.object
+  style: require('prop-types').object
 };
 export default AutoSizer;
-import PropTypes from 'prop-types';

@@ -225,34 +225,31 @@ WindowScroller.propTypes = process.env.NODE_ENV === 'production' ? null : {
    * This function should implement the following signature:
    * ({ height, isScrolling, scrollLeft, scrollTop, width }) => PropTypes.element
    */
-  children: PropTypes.func.isRequired,
+  children: require('prop-types').func.isRequired,
 
 
   /** Callback to be invoked on-resize: ({ height, width }) */
-  onResize: PropTypes.func.isRequired,
+  onResize: require('prop-types').func.isRequired,
 
 
   /** Callback to be invoked on-scroll: ({ scrollLeft, scrollTop }) */
-  onScroll: PropTypes.func.isRequired,
+  onScroll: require('prop-types').func.isRequired,
 
 
   /** Element to attach scroll event listeners. Defaults to window. */
-  scrollElement: PropTypes.oneOfType([PropTypes.any, function () {
-    return (typeof Element === 'function' ? PropTypes.instanceOf(Element) : PropTypes.any).apply(this, arguments);
-  }]),
+  scrollElement: require('prop-types').oneOfType([require('prop-types').any, typeof Element === 'function' ? require('prop-types').instanceOf(Element) : require('prop-types').any]),
 
   /**
    * Wait this amount of time after the last scroll event before resetting child `pointer-events`.
    */
-  scrollingResetTimeInterval: PropTypes.number.isRequired,
+  scrollingResetTimeInterval: require('prop-types').number.isRequired,
 
 
   /** Height used for server-side rendering */
-  serverHeight: PropTypes.number.isRequired,
+  serverHeight: require('prop-types').number.isRequired,
 
 
   /** Width used for server-side rendering */
-  serverWidth: PropTypes.number.isRequired
+  serverWidth: require('prop-types').number.isRequired
 };
 export default WindowScroller;
-import PropTypes from 'prop-types';

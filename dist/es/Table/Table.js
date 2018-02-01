@@ -5,9 +5,9 @@ import _createClass from 'babel-runtime/helpers/createClass';
 import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
 import _inherits from 'babel-runtime/helpers/inherits';
 
+var babelPluginFlowReactPropTypes_proptype_CellPosition = require('../Grid').babelPluginFlowReactPropTypes_proptype_CellPosition || require('prop-types').any;
 
 import cn from 'classnames';
-
 import Column from './Column';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
@@ -779,4 +779,3 @@ Table.propTypes = process.env.NODE_ENV !== "production" ? {
   /** Width of list */
   width: PropTypes.number.isRequired
 } : {};
-import { bpfrpt_proptype_CellPosition } from '../Grid';

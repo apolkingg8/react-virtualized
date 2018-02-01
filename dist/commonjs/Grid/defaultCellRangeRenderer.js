@@ -5,11 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = defaultCellRangeRenderer;
 
-
 /**
  * Default implementation of cellRangeRenderer used by Grid.
  * This renderer supports cell-caching while the user is scrolling.
  */
+
+var babelPluginFlowReactPropTypes_proptype_CellRangeRendererParams = require('./types').babelPluginFlowReactPropTypes_proptype_CellRangeRendererParams || require('prop-types').any;
 
 function defaultCellRangeRenderer(_ref) {
   var cellCache = _ref.cellCache,

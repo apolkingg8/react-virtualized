@@ -1,10 +1,11 @@
 import React from 'react';
 import SortIndicator from './SortIndicator';
 
-
 /**
  * Default table header renderer.
  */
+var babelPluginFlowReactPropTypes_proptype_HeaderRendererParams = require('./types').babelPluginFlowReactPropTypes_proptype_HeaderRendererParams || require('prop-types').any;
+
 export default function defaultHeaderRenderer(_ref) {
   var dataKey = _ref.dataKey,
       label = _ref.label,
@@ -27,6 +28,4 @@ export default function defaultHeaderRenderer(_ref) {
 
   return children;
 }
-defaultHeaderRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : bpfrpt_proptype_HeaderRendererParams === PropTypes.any ? {} : bpfrpt_proptype_HeaderRendererParams;
-import { bpfrpt_proptype_HeaderRendererParams } from './types';
-import PropTypes from 'prop-types';
+defaultHeaderRenderer.propTypes = process.env.NODE_ENV === 'production' ? null : babelPluginFlowReactPropTypes_proptype_HeaderRendererParams === require('prop-types').any ? {} : babelPluginFlowReactPropTypes_proptype_HeaderRendererParams;
